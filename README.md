@@ -51,7 +51,7 @@ Follow `closed\_loop\_manual\_build\_guide.md` to build it block-by-block, or op
 
 ### Controller comparison (48-hour clean sine weather profile)
 
-!\[Indoor temperature under three fan-control strategies](figure1.png)
+![Indoor temperature under three fan-control strategies](figure1.png)
 
 |Controller|Energy\*|Comfort %|
 |-|-|-|
@@ -61,17 +61,17 @@ Follow `closed\_loop\_manual\_build\_guide.md` to build it block-by-block, or op
 
 \*Energy in normalized `(speed/speedMax)^3`-hours, a fan-affinity-law proxy for power draw.
 
-!\[Commanded fan speed for each controller](figure2.png)
+![Commanded fan speed for each controller](figure2.png)
 
 ### Energy vs. comfort trade-off (PID gain sweep)
 
-!\[Energy vs comfort Pareto trade-off](figure3.png)
+![Energy vs comfort Pareto trade-off](figure3.png)
 
 Sweeping PID aggressiveness (`Kp = 2..25`) traces out a full energy/comfort Pareto curve. The Fuzzy controller sits **above** this curve — for the same energy budget, no PID gain setting matches Fuzzy's comfort level, and Fuzzy is Pareto-superior to Bang-bang outright. This is the strongest evidence in the project that the fuzzy strategy is a genuinely better design choice, not just a differently-tuned one.
 
 ### Closed-loop Simulink validation
 
-!\[Simulink closed-loop Tin vs Tout, 10-day run](simulink\_figure.png)
+![Simulink closed-loop Tin vs Tout, 10-day run](simulink\_figure.png)
 
 The rebuilt Simulink model, run over 10 simulated days with `ode15s`, shows `Tin` settling into a stable, repeating \~23.5–26.5 °C band despite `Tout` swinging the full \~14–30 °C range — consistent with the MATLAB-script result, providing cross-validation between the two independent implementations.
 
