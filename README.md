@@ -15,7 +15,7 @@ Design an intelligent fan cooling system to moderate temperatures in a building 
 |`building\_cooling\_extension.m`|**New.** ODE-based building thermal (RC) model + 3-way controller comparison (Fuzzy / PID / Bang-bang), Pareto trade-off analysis, long-horizon noisy-weather robustness testing|
 |`closed\_loop\_manual\_build\_guide.md`|**New.** Step-by-step manual build guide (block names, library paths, parameters) for wiring `myflcc.fis` into a real closed-loop Simulink thermal model|
 |`IntelligentFan\_ClosedLoop.slx`|**New.** Closed-loop Simulink model built from the guide above — couples the actual Fuzzy Logic Controller block to a Building Thermal Plant subsystem and a reduced-order motor lag, validated over a 240-hour (10-day) run|
-|`figure1.png`, `Figure2.png`, `figure3.png`|**New.** Result plots from `building\_cooling\_extension.m` — indoor temperature comparison, fan speed comparison, and the energy/comfort Pareto trade-off|
+|`figure1.png`, `figure2.png`, `figure3.png`|**New.** Result plots from `building\_cooling\_extension.m` — indoor temperature comparison, fan speed comparison, and the energy/comfort Pareto trade-off|
 |`Simulink Figure.png`|**New.** Scope capture from the closed-loop Simulink model's 10-day validation run|
 |`LICENSE`|MIT License|
 
@@ -23,7 +23,7 @@ Design an intelligent fan cooling system to moderate temperatures in a building 
 
 ## Background: what the original model did (and didn't) show
 
-The original `IntelligentFan.slx` is a **motor-drive feasibility model**, not a building simulation. Its indoor/outdoor temperatures are fixed constants (25 °C / 12 °C), so it only demonstrates that the fuzzy controller's single speed command can actually be achieved by the BLDC drive hardware (PI loop, inverter, commutation, motor dynamics) — it says nothing about whether the strategy actually moderates a building's temperature over a day/night cycle.
+The `IntelligentFan.slx` is a **motor-drive feasibility model**, not a building simulation. Its indoor/outdoor temperatures are fixed constants (25 °C / 12 °C), so it only demonstrates that the fuzzy controller's single speed command can actually be achieved by the BLDC drive hardware (PI loop, inverter, commutation, motor dynamics) — it says nothing about whether the strategy actually moderates a building's temperature over a day/night cycle.
 
 This repo's additions close that gap: an actual thermal plant, a realistic diurnal weather profile, and a genuine closed feedback loop, first prototyped quickly in MATLAB (`building\_cooling\_extension.m`) and then rebuilt natively in Simulink (`IntelligentFan\_ClosedLoop.slx`) using the real `myflcc.fis` block.
 
